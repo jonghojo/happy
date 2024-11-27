@@ -1,4 +1,4 @@
-package invitation.project.controller;
+package project.invitation.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

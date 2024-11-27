@@ -1,4 +1,4 @@
-package invitation.project.controller;
+package project.invitation.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
