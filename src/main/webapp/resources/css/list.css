@@ -1,0 +1,274 @@
+@font-face {
+    font-family: 'GowunDodum-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KyoboHandwriting2021sjy';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KyoboHandwriting2021sjy.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'InkLipquid';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {margin: 0 auto; padding: 0; font-family: 'GowunDodum-Regular';}
+
+a {text-decoration: none; color: #333;}
+
+ul, ol, li {list-style: none;}
+
+#wrap {
+    width: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#list_title {
+    text-align: center;
+    height: 80px;
+    margin: 40px 0 20px 0;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.r_btn {
+   text-align: right;
+   width: 90%;
+   margin-bottom: 10px;
+}
+
+.m_btn {
+   text-align: center;
+   width: 90%;
+   margin-top: 20px;
+   margin-bottom: 20px;
+   
+}
+
+.card_m {
+    width: 380px;
+    height: 120px;
+    border-radius: 10px;
+    background-color: rgb(227, 240, 226);
+    display: flex;
+    align-items: center;
+    margin: 10px 0 15px 0;
+    box-shadow: 1px 2px 3px rgb(199, 199, 199);
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card_tr {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card_head {
+    display: flex;
+    width: 90%;
+    height: 30px;
+}
+
+.card_head p {
+    width: 45%;
+    height: 100%;
+}
+
+.date {
+    text-align: right;
+    font-size: 15px;
+    font-family: 'GowunDodum-Regular'
+}
+
+.card_body {
+    width: 85%;
+    font-size: 20px;
+    height: 35px;
+}
+
+.card_text a {
+    font-family: 'KyoboHandwriting2021sjy';
+    font-weight: bold;
+}
+
+.card_footer {
+    width: 85%;
+    text-align: right;
+    font-size: 14px;
+}
+
+.comment {
+    width: 55px;
+    border: 2px solid rgb(92, 129, 92);
+    border-radius: 5px;
+    background-color: rgb(254, 255, 252);
+}
+
+.comment:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 2px #333;
+}
+
+#regBtn {
+    width: 95px;
+    height: 35px;
+    cursor: pointer;
+    border: 1px solid rgb(165, 173, 165);
+    border-radius: 5px;
+    background-color: rgb(251, 255, 243);
+    box-shadow: 1px 1px 1px #8f8f8f;
+}
+
+#regBtn:hover{
+	box-shadow: 2px 2px 2px #8f8f8f;
+}
+
+#mainbutton{
+	width: 195px;
+    height: 35px;
+    cursor: pointer;
+    border: 1px solid rgb(165, 173, 165);
+    border-radius: 5px;
+    background-color: rgb(251, 255, 243);
+    box-shadow: 1px 1px 1px #8f8f8f;
+}
+
+#mainbutton:hover{
+	box-shadow: 2px 2px 2px #8f8f8f;
+}
+
+.modal-content.wit{
+   width: 50% !important;
+}
+
+/* register css */
+
+#wrap_reg {
+   width: 400px;
+    height: 865px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ecf5dd;
+    border-radius: 5px;
+    justify-content: center;
+} 
+
+.regT_box {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.reg_title {
+   height: 50px;
+   margin: 40px 0 20px 0;
+   color: #595959;
+}
+
+.list_body {
+   width: 80%;
+   display: flex;
+   align-items: center;
+}
+
+.form_wit {
+   width: 100%;
+}
+
+.form-group {
+   width: 100%;
+}
+
+.form-control {
+   width: 100%;
+   border: none;
+   border-radius: 5px;
+   margin: 10px 0 10px 0;
+   box-shadow: 2px 2px 2px #d9d9d9;
+}
+
+.text_a {
+   width: 100%;
+   height: 100px;
+}
+
+.input_form {
+   height: 30px;
+}
+
+.btn-default {
+   width: 90px;
+   height: 35px;
+   border-radius: 5px;
+   border: 1px solid #b5c1b5; 
+   background: white;
+   box-shadow: 1px 1px 1px #d9d9d9;
+}
+
+.btn-default:hover {
+   cursor: pointer;
+   opacity: 0.9;
+}
+
+.btn_box {
+   margin-top: 10px;
+   text-align: right;
+}
+
+nav li{
+	margin: 10px 10px;
+}
+
+.row{
+	width:100%;
+	align-items: center;	
+}
+
+#searchForm{
+	width:100%;
+	display:flex;
+	justify-content: center;
+    align-items: center
+}
+
+.search-box{
+	margin:10px;
+}
+.search-btn {
+  color: #EDEDED;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #949BA0;
+  align-items: center;
+  justify-content: center;
+}
+
+
+footer {
+	width:400px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    background-color: #a0be90;
+    font-family: 'InkLipquid';
+}
+
+footer a {
+    color: white;
+    font-family: 'InkLipquid';
+    font-size: 30px;
+}
