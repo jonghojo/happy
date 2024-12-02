@@ -192,4 +192,9 @@ public class MessageController {
         // "/WEB-INF/views/invitation/wedding.jsp"를 보여준다
         return "invitation/wedding";  // JSP 뷰 이름 반환
     }
+	
+	@RequestMapping("/customLogin")
+	    public String showCustomLoginPage() {
+	        return "invitation/customLogin";  // 반환할 view 이름 (예: customLogin.jsp 또는 customLogin.html)
+	    }
 }
