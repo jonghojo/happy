@@ -2,7 +2,6 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!doctype html>
 <html lang="en">
@@ -59,17 +58,13 @@
                         data-guestpw="${message.guestpw}"><c:out
                            value="${message.content}" /></a>
                   </p>
+                   
                </div>
                <div class="card_footer">
-                  <sec:authorize access="isAuthenticated()">
-					    <div style="text-align: right;">
-					        <button type="button" class="btn btn-primary" id="addcommentsBtn">답글 작성</button>
-					    </div>
-					</sec:authorize>
+                  <button class="comment">댓글</button>
                </div>
             </div>
          </div>
-         <ul id="comments-${message.mno}" class="comments-list"></ul>
       </c:forEach>
 
 
@@ -166,7 +161,12 @@
          </div>
          
          <footer>
-            <p><a href="/customLogin">소중한 추억으로 간직하겠습니다.</a></p>
+            <!-- <p><a href="/invitation/customLogin">소중한 추억으로 간직하겠습니다.</a></p> -->
+            <div class="a_btn">
+            <button id="adminbutton" type="button">
+            	소중한 추억으로 간직하겠습니다.
+            </button>
+         </div>
               
          </footer>
 
@@ -251,239 +251,8 @@
             </div>
          </div>
          <!-- 모달창 끝 -->
-         
-         <!-- 답글 관련 모달창 -->
-	<!-- 답글 작성 모달 -->
-	<div id="mymodal" class="modal" tabindex="-1">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title">REPLY MODAL</h5>
-	      </div>
-	      <div class="modal-body">
-			<div class="form-group">
-				<label>Comments</label>
-				<input class="form-control" name="Comments" value="New Comments!!">
-			</div>
-			<div class="form-group">
-				<label>Writer</label>
-				<input class="form-control" name="Writer" value="New Writer!!" >
-			</div>
-			<div class="form-group">
-				<label>Comments Date</label>
-				<input class="form-control" name="Comments Date" id="commentDate" value="" readonly>
-			</div>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary" id="modalModBtn">Modify</button>
-	        <button type="button" class="btn btn-danger" id="modalRemoveBtn">Remove</button>
-	        <button type="button" class="btn btn-info" id="modalRegisterBtn">Register</button>
-	        <button type="button" class="btn btn-default" id="modalCloseBtn" data-bs-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
             
 </div>
-
-<script src="/resources/js/comments.js"></script>
-
-<style>
-	.chat>li:hover{
-		cursor:pointer;
-	}
-</style>
-
-<script>
-
-/* comments */
-$(document).ready(function(){
-	
-	// 페이지 로드 시 각 게시물에 대해 댓글을 자동으로 로드
-	$(".card_m").each(function() {
-        let mnoValue = $(this).find(".content-link").data("mno");  // 게시물의 mno 값 가져오기
-        console.log("mnoValue:", mnoValue);  // 확인
-        showList(mnoValue);  // 해당 mno에 맞는 댓글 로드 함수 호출
-    });
-	
-	// 댓글 로드 함수
-	function showList(mnoValue) {
-		let commentsUL = $("#comments-" + mnoValue); // 특정 mno에 해당하는 UL 선택
-		console.log("commentsUL: ", commentsUL);
-		commentsUL.empty();
-		
-	 	// 댓글 데이터를 서버에서 가져오는 부분 (예시)
-        commentsService.getList({ mno: mnoValue }, function(data) {
-        	console.log("댓글 데이터: ", data);
-        	if (data && data.length > 0) {
-                // 댓글 데이터가 성공적으로 로드되면, 댓글을 표시
-                data.forEach(function(comment) {
-                    let str = "<li class='left clearfix' data-cno='" + comment.cno + "'>";
-                    str += "<div class='header' style='display: flex; flex-direction: column;'>";
-                    str += "<strong class='primary-font'>" + comment.commenter + "</strong>";  // 작성자
-                    str += "</div>";
-                    str += "<p>" + comment.c_content + "</p>";  // 댓글 내용
-                    str += "</li>";
-                    commentsUL.append(str);  // 댓글 항목을 UL에 추가
-                });
-            } 
-        }, function(error) {
-            console.error("댓글 가져오기 실패:", error);
-        });
-    }
-	
-    let modal = $("#mymodal");
-    let modalInputComment = modal.find("input[name='Comments']");
-    let modalInputCommenter = modal.find("input[name='Writer']");
-    
-    let modalRegisterBtn = $("#modalRegisterBtn");
-    let modalModBtn = $("#modalModBtn");
-    let modalRemoveBtn = $("#modalRemoveBtn");
-
-    var commenter = $("#commenter").val();  // 서버에서 넘겨받은 commenter 값
-
-	<sec:authorize access="isAuthenticated()">
-		commenter = '<sec:authentication property="principal.username"/>';
-	</sec:authorize>
-	
-	
-	
-    // new comment 팝업창
-    $("body").on("click", "#addcommentsBtn", function () {
-    	var mno = $(this).closest('.card_m').find('.content-link').data("mno");
-        console.log("게시글 번호(mno):", mno);// 게시글 번호 가져오기
-        
-        $("#mymodal").data("mno", mno);
-        
-        
-        $("#mymodal").modal("show"); // 모달 열기
-        function decodeHtmlEntity(str) {
-    	    var doc = new DOMParser().parseFromString(str, 'text/html');
-    	    return doc.documentElement.textContent || doc.body.textContent;
-    	}
-    	 
-    	// commenter 값을 디코딩해서 설정
-    	 let decodedCommenter = decodeHtmlEntity(commenter);
-
-        modal.find("input").val(""); // 입력 필드 초기화
-	    // 작성자 설정
-	   	modal.find("input[name='Writer']").val(decodedCommenter);
-        modal.find("button[id!='modalCloseBtn']").hide();  // 수정, 삭제 버튼 숨기기
-        modalRegisterBtn.show();  // 등록 버튼 표시
-
-    	
-	});
-    
-
-    // 댓글 등록
-    modalRegisterBtn.on("click", function () {
-    	
-    	var mnoValue = $('#mymodal').data('mno');
-        console.log("MNO:", mnoValue);
-    	
-        let comments = {
-        	c_content: modalInputComment.val(),
-        	commenter: modalInputCommenter.val(),
-            mno: mnoValue,
-            c_date: new Date() // 현재 날짜와 시간을 댓글 작성 날짜로 설정
-        };
-        
-        console.log("댓글 내용:", comments);
-
-        commentsService.add(comments, function (result) {
-            alert(result);
-
-            modal.find("input").val("");
-            modal.modal("hide");
-            
-            let mnoValue = $('#mymodal').data('mno');
-            console.log("댓글 추가 후 mnoValue:", mnoValue);  // mnoValue 확인
-
-            showList(mnoValue);
-        });
-    });
-    
- // 수정 및 삭제 시작
-	// 답글 클릭 시 모달 창 표시
-	$(".comments-list").on("click", "li", function() {
-        let cno = $(this).data("cno");  // 클릭된 댓글의 cno
-        var mno = $(this).closest('.card').find('.content-link').data("mno");
-        console.log("mno : " + mno);
-        console.log("cno : " + cno);
-        
-        // 댓글 데이터를 가져오는 부분
-        commentsService.get(cno, function(comment) {
-            modal.find("input[name='Comments']").val(comment.c_content);
-            modal.find("input[name='Writer']").val(comment.commenter);
-            modal.find("input[name='cno']").val(comment.cno);  // cno도 모달에 담기
-            modal.data("cno", comment.cno);  // cno 데이터를 모달에 저장
-            modal.data("mno", mno);  // mno도 모달에 저장
-
-            // 수정, 삭제 버튼 보이기
-            modalModBtn.show();
-            modalRemoveBtn.show();
-            modalRegisterBtn.hide();  // 등록 버튼 숨기기
-            
-            // 모달 열기
-            modal.modal("show");
-        }, function(error) {
-            console.error("댓글 데이터 가져오기 실패:", error);
-        });
-    });
-	
-	// 댓글 수정 처리
-    modalModBtn.on("click", function() {
-        let comments = {
-            cno: modal.data("cno"),
-            c_content: modalInputComment.val(),
-            commenter: modalInputCommenter.val(),
-        };
-
-        commentsService.update(comments, function(result) {
-            alert("댓글이 수정되었습니다.");
-            modal.find("input").val("");  // 입력 필드 초기화
-            modal.modal("hide");
-
-            var mnoValue = $('#mymodal').data('mno');
-            showList(mnoValue);  // 댓글 목록 갱신
-        });
-    });
-	
- 	// 댓글 삭제 처리
-    modalRemoveBtn.on("click", function(response) {
-    	let cno = modal.data("cno");  // 삭제할 댓글의 cno
-        let mno = modal.data("mno");  // 게시물 번호 (mno)
-    	
-
-        if (!cno) {
-            alert("삭제할 댓글이 없습니다.");
-            return;
-        }
-        
-        if (confirm("정말 삭제하시겠습니까?")) {
-            commentsService.remove(cno, function(response) {
-                alert("댓글이 삭제되었습니다.");
-                modal.modal("hide");
-
-                showList(mnoValue);  // 댓글 목록 갱신
-            }, function(error) {
-                
-            });
-        }
-    });
-    
-    $("body").on("click", "#addcommentsBtn", function() {
-        var today = new Date();
-        var yyyy = today.getFullYear();
-        var mm = (today.getMonth() + 1).toString().padStart(2, '0'); // 월을 2자리로 맞추기
-        var dd = today.getDate().toString().padStart(2, '0'); // 일을 2자리로 맞추기
-        var currentDate = yyyy + '-' + mm + '-' + dd; // yyyy-MM-dd 형식
-
-        // 댓글 작성 모달의 날짜 필드에 현재 날짜 입력
-        $("#commentDate").val(currentDate);
-    });
-});
-</script>
 
 </body>
 </html>
