@@ -300,7 +300,7 @@
 $(document).ready(function(){
 	
 	// 페이지 로드 시 각 게시물에 대해 댓글을 자동으로 로드
-	$(".card").each(function() {
+	$(".card_m").each(function() {
         let mnoValue = $(this).find(".content-link").data("mno");  // 게시물의 mno 값 가져오기
         console.log("mnoValue:", mnoValue);  // 확인
         showList(mnoValue);  // 해당 mno에 맞는 댓글 로드 함수 호출
@@ -310,21 +310,23 @@ $(document).ready(function(){
 	function showList(mnoValue) {
 		let commentsUL = $("#comments-" + mnoValue); // 특정 mno에 해당하는 UL 선택
 		console.log("commentsUL: ", commentsUL);
-	    commentsUL.empty();
-
+		commentsUL.empty();
+		
 	 	// 댓글 데이터를 서버에서 가져오는 부분 (예시)
         commentsService.getList({ mno: mnoValue }, function(data) {
         	console.log("댓글 데이터: ", data);
-            // 댓글 데이터가 성공적으로 로드되면, 댓글을 표시
-            data.forEach(function(comment) {
-            	let str = "<li class='left clearfix' data-cno='" + comment.cno + "'>";
-                str += "<div class='header' style='display: flex; flex-direction: column;'>";
-                str += "<strong class='primary-font'>" + comment.commenter + "</strong>";  // 작성자
-                str += "</div>";
-                str += "<p>" + comment.c_content + "</p>";  // 댓글 내용
-                str += "</li>";
-                commentsUL.append(str);  // 댓글 항목을 UL에 추가
-            });
+        	if (data && data.length > 0) {
+                // 댓글 데이터가 성공적으로 로드되면, 댓글을 표시
+                data.forEach(function(comment) {
+                    let str = "<li class='left clearfix' data-cno='" + comment.cno + "'>";
+                    str += "<div class='header' style='display: flex; flex-direction: column;'>";
+                    str += "<strong class='primary-font'>" + comment.commenter + "</strong>";  // 작성자
+                    str += "</div>";
+                    str += "<p>" + comment.c_content + "</p>";  // 댓글 내용
+                    str += "</li>";
+                    commentsUL.append(str);  // 댓글 항목을 UL에 추가
+                });
+            } 
         }, function(error) {
             console.error("댓글 가져오기 실패:", error);
         });
@@ -403,7 +405,7 @@ $(document).ready(function(){
     
  // 수정 및 삭제 시작
 	// 답글 클릭 시 모달 창 표시
-	$(".chat").on("click", "li", function() {
+	$(".comments-list").on("click", "li", function() {
         let cno = $(this).data("cno");  // 클릭된 댓글의 cno
         var mno = $(this).closest('.card').find('.content-link').data("mno");
         console.log("mno : " + mno);
@@ -450,7 +452,7 @@ $(document).ready(function(){
  	// 댓글 삭제 처리
     modalRemoveBtn.on("click", function(response) {
     	let cno = modal.data("cno");  // 삭제할 댓글의 cno
-        /* let mno = modal.data("mno");  // 게시물 번호 (mno) */
+        let mno = modal.data("mno");  // 게시물 번호 (mno)
     	
 
         if (!cno) {
@@ -465,7 +467,7 @@ $(document).ready(function(){
 
                 showList(mnoValue);  // 댓글 목록 갱신
             }, function(error) {
-                console.error("댓글 삭제 실패:", error);
+                
             });
         }
     });
