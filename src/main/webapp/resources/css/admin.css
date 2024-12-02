@@ -1,210 +1,67 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>연아 ♡ 우림 모바일 청첩장</title>
+@charset "UTF-8";
 
-<<<<<<< HEAD
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-=======
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
->>>>>>> f0e3815d1b8a03b0b7687debc070c4df46740202
+@font-face {
+    font-family: 'GowunDodum-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
-	  <!-- css -->
-	  <link href="/resources/css/style.css" rel="stylesheet">
-	  
-	  <!-- js -->
-	  <script src="/resources/js/index.js"></script>
+* {margin: 0 auto; padding: 0; font-family: 'GowunDodum-Regular';}
 
-</head>
-<body>
+a {text-decoration: none; color: #333;}
 
-<div id="wrap">
+ul, ol, li {list-style: none;}
 
-        <div class="bg_g">
-            <div id="main">
-                                               
-                <div id="slidewrap">
-                    <h1 class="title">Wedding Invitation</h1>
-                    
-                    <ul class="slide">     
-<<<<<<< HEAD
-                       <li><img src="/resources/img/wedding11.jpg" alt="wedding"></li>           
-                       <li><img src="/resources/img/wedding3.jpg" alt="wedding"></li>           
-                       <li><img src="/resources/img/wedding16.jpg" alt="wedding"></li>
-                    </ul>
-                    
-=======
-           
-                       <li><img src="/resources/img/wedding11.jpg" alt="wedding"></li>           
-                       <li><img src="/resources/img/wedding3.jpg" alt="wedding"></li>           
-                       <li><img src="/resources/img/wedding16.jpg" alt="wedding"></li>
-           
-                    </ul>
-                    
-                    
->>>>>>> f0e3815d1b8a03b0b7687debc070c4df46740202
-                </div>
-                <p class="notice">2025/01/17 <br>
-                    서울신라호텔 다이너스티</p>
-            </div>
-    
-            <div class="ment">
-    
-                <p class="date">2025/01/17</p>
-    
-                <div class="line">
-                    <h3>결혼합니다.</h3>
-                </div>
-                
-                <p>새로이 시작하는 작은 사랑이 <br>
-                    보다 크고 깊은 사랑이 되려고 합니다.<br>
-                    함께 자리하여 축복해 주시면<br>
-<<<<<<< HEAD
-                    더 없는 기쁨이겠습니다.
-                </p>
-            </div>
-        </div>
-     
-        <div class="calender">
-            <img src="/resources/img/january.png" alt="calender">
-=======
-                    더 없는 기쁨이겠습니다.</p>
-    
-            </div>
-        </div>
-     
+#login_wrap {
+	width: 400px;
+	height: 550px;
+	display: flex;
+	align-items: center;
+}
 
-        <div class="calender">
+.login_title {
+	color: green;
+}
 
-            <img src="/resources/img/january.png" alt="calender">
+.container_box {
+	width: 100%;
+	height: 400px;
+	border: 1px solid #569156;
+	border-radius: 5px;
+}
 
->>>>>>> f0e3815d1b8a03b0b7687debc070c4df46740202
-        </div>
+.container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
-        <div class="pictorial">
-            <img src="/resources/img/wedding5.jpg" alt="wedding">
-            <img src="/resources/img/wedding6.jpg" alt="wedding">
-            <img src="/resources/img/wedding7.jpg" alt="wedding">
-            <img src="/resources/img/wedding12.jpg" alt="wedding">
-        </div>
+.row {
+	width: 85%;
+}
 
-        <div class="maps">
+.form-control {
+	margin: 10px 0 10px 0;
+	border: 1px solid #c1c1c1;
+}
 
-            <h3>오시는 길</h3>
-            <img src="/resources/img/maps.png" alt="maps">
-            <p>서울신라호텔 주소 : 서울시 중구 동호로 249</p>
-            <img src="/resources/img/maps2.png" alt="">
-        </div>
+.form-control:focus {
+	border: 1px solid #429d42;
+	box-shadow: none; 
+}
 
-        <div id="account">
+.submit_btn {
+	width: 100%;
+	margin: 10px 0 10px 0;
+	background-color: #429d42;
+	color: white;
+}
 
-            <div class="line">
-                <h4>마음 전하실 곳</h4>
-            </div>
-
-            <p class="count">참석이 어려워 직접 축하를 전하지 못할  <br> 
-                분들을 위해 계좌번호를 남겼습니다.</p>
-            
-            <ul class="menu">
-
-<<<<<<< HEAD
-               <li><a href="#" class="brideLink">신랑 - 고우림</a>
-                    <ul class="sub">
-                        <li><a href="#" class="brideLink">우리은행 1000-1234-567890</a></li>
-                    </ul>
-                </li>
-               
-               <li><a href="#" class="brideLink">신부 - 김연아</a>
-                    <ul class="sub">
-                        <li><a href="#" class="brideLink">국민은행 100-12340-567890</a></li>
-=======
-               <li><a href="#">신랑 - 고우림</a>
-                    <ul class="sub">
-                        <li><a href="#account">우리은행 1000-1234-567890</a></li>
-                    </ul>
-                </li>
-               
-               <li><a href="#" id="brideLink">신부 - 김연아</a>
-                    <ul class="sub">
-                        <li><a href="#account">국민은행 100-12340-567890</a></li>
->>>>>>> f0e3815d1b8a03b0b7687debc070c4df46740202
-                    </ul>
-                </li>
-            </ul>
-
-        </div>
-
-        <div id="comments">
-
-            <div class="btn_c">
-                <p>"새로운 출발을 앞둔 부부에게 <br>
-<<<<<<< HEAD
-                    응원과 축하의 메세지를 남겨주세요~"
-                </p>
-=======
-                    응원과 축하의 메세지를 남겨주세요~"</p>
->>>>>>> f0e3815d1b8a03b0b7687debc070c4df46740202
-
-                <form action="/invitation/list" method="get">
-				    <button type="submit" class="btn">메세지 남기러 가기!</button>
-				</form>
-            </div>
-
-        </div>
-
-        <footer>
-<<<<<<< HEAD
-            <p>thank you !</p>
-        </footer>
-
-    </div>
-
-=======
-
-            <p>thank you !</p>
-
-        </footer>
-
-
-    </div>
-
-<!-- <script type="text/javascript">
-
-$(function(){
-
-    $('.menu>li').click(function(){
-
-      $('.sub').stop().slideUp();
-
-      $(this).find('.sub').stop().slideToggle();
-
-    });
-
-        let i = 0;
-
-        function slide() {
-            i++;
-
-            if (i > $('.slide li:last').index()) {
-                i = 0;
-            }
-
-            $('.slide li').eq(i).stop().fadeIn('slow', 'linear');  // 느리게 나타남
-            $('.slide li').eq(i-1).stop().fadeOut(500, 'swing');    // 500ms 동안 부드럽게 사라짐
-        }
-
-        setInterval(slide, 3500);
-  });
-
-</script> -->
-
->>>>>>> f0e3815d1b8a03b0b7687debc070c4df46740202
-</body>
-</html>
+.submit_btn:hover {
+	background-color: #569156;
+	color: white;
+	box-shadow: 2px 3px 3px #cfcfcf;
+}
