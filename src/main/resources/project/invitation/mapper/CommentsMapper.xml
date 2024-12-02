@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="project.invitation.mapper.CommentsMapper">
+
+	<insert id="insert">
+	    insert into Comments (cno, mno, c_content, commenter)
+	    values (cno_seq.nextval, #{mno}, #{c_content}, #{commenter})
+	</insert>
+	
+	<select id="read" resultType="project.invitation.domain.CommentsVO">
+		select * from comments where cno = #{cno}
+	</select>
+	
+	<select id="getList" resultType="project.invitation.domain.CommentsVO">
+		select * from comments where mno = #{mno}
+	</select>
+	
+	<delete id="delete">
+		delete from comments where cno = #{cno}
+	</delete>
+	
+	<update id="update">
+		update comments
+		set
+		c_content = #{c_content}
+		where cno = #{cno}
+	</update>
+	
+	<insert id="insertReply" parameterType="project.invitation.domain.CommentsVO">
+        INSERT INTO comments (mno, c_content, commenter, c_date)
+        VALUES (mno_seq.nextval, #{c_content}, #{commenter}, NOW())
+    </insert>
+    
+    <select id="selectReplies" resultType="project.invitation.domain.CommentsVO">
+        SELECT * FROM comments WHERE mno = #{mno} ORDER BY c_date ASC
+    </select>
+    
+</mapper>
