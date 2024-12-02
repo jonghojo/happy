@@ -8,7 +8,7 @@ import lombok.Data;
 public class AdminVO {
 
 	private String admin_id;
-	private String admin_pw;
+	private String admin_password;
+	private String username;
 	
-	private List<AuthVO> authList;
 }

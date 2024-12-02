@@ -10,13 +10,13 @@
 <meta charset="UTF-8">
 <title>연아 ♡ 우림 모바일 청첩장</title>
 
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-	  <!-- css -->
-	  <link href="/resources/css/style.css" rel="stylesheet">
-	  
-	  <!-- js -->
-	  <script src="/resources/js/index.js"></script>
+     <!-- css -->
+     <link href="/resources/css/style.css" rel="stylesheet">
+     
+     <!-- js -->
+     <script src="/resources/js/index.js"></script>
 
 </head>
 <body>
@@ -30,13 +30,10 @@
                     <h1 class="title">Wedding Invitation</h1>
                     
                     <ul class="slide">     
-           
                        <li><img src="/resources/img/wedding11.jpg" alt="wedding"></li>           
                        <li><img src="/resources/img/wedding3.jpg" alt="wedding"></li>           
                        <li><img src="/resources/img/wedding16.jpg" alt="wedding"></li>
-           
                     </ul>
-                    
                     
                 </div>
                 <p class="notice">2025/01/17 <br>
@@ -54,16 +51,13 @@
                 <p>새로이 시작하는 작은 사랑이 <br>
                     보다 크고 깊은 사랑이 되려고 합니다.<br>
                     함께 자리하여 축복해 주시면<br>
-                    더 없는 기쁨이겠습니다.</p>
-    
+                    더 없는 기쁨이겠습니다.
+                </p>
             </div>
         </div>
      
-
         <div class="calender">
-
             <img src="/resources/img/january.png" alt="calender">
-
         </div>
 
         <div class="pictorial">
@@ -92,15 +86,15 @@
             
             <ul class="menu">
 
-               <li><a href="#">신랑 - 고우림</a>
+               <li><a href="#" class="brideLink">신랑 - 고우림</a>
                     <ul class="sub">
-                        <li><a href="#account">우리은행 1000-1234-567890</a></li>
+                        <li><a href="#" class="brideLink">우리은행 1000-1234-567890</a></li>
                     </ul>
                 </li>
                
-               <li><a href="#" id="brideLink">신부 - 김연아</a>
+               <li><a href="#" class="brideLink">신부 - 김연아</a>
                     <ul class="sub">
-                        <li><a href="#account">국민은행 100-12340-567890</a></li>
+                        <li><a href="#" class="brideLink">국민은행 100-12340-567890</a></li>
                     </ul>
                 </li>
             </ul>
@@ -111,53 +105,21 @@
 
             <div class="btn_c">
                 <p>"새로운 출발을 앞둔 부부에게 <br>
-                    응원과 축하의 메세지를 남겨주세요~"</p>
+                    응원과 축하의 메세지를 남겨주세요~"
+                </p>
 
                 <form action="/invitation/list" method="get">
-				    <button type="submit" class="btn">메세지 남기러 가기!</button>
-				</form>
+                <button type="submit" class="btn">메세지 남기러 가기!</button>
+            </form>
             </div>
 
         </div>
 
         <footer>
-
             <p>thank you !</p>
-
         </footer>
 
-
     </div>
-
-<!-- <script type="text/javascript">
-
-$(function(){
-
-    $('.menu>li').click(function(){
-
-      $('.sub').stop().slideUp();
-
-      $(this).find('.sub').stop().slideToggle();
-
-    });
-
-        let i = 0;
-
-        function slide() {
-            i++;
-
-            if (i > $('.slide li:last').index()) {
-                i = 0;
-            }
-
-            $('.slide li').eq(i).stop().fadeIn('slow', 'linear');  // 느리게 나타남
-            $('.slide li').eq(i-1).stop().fadeOut(500, 'swing');    // 500ms 동안 부드럽게 사라짐
-        }
-
-        setInterval(slide, 3500);
-  });
-
-</script> -->
 
 </body>
 </html>
