@@ -1,6 +1,6 @@
 $(function(){
 
-   //account toggle
+	//account toggle
     $('.menu>li').click(function(){
 
       $('.sub').stop().slideUp();
@@ -9,7 +9,7 @@ $(function(){
 
     });
 
-      //fadeln 슬라이드
+	//fadeln 슬라이드
     let i = 0;
 
     function slide() {
@@ -28,9 +28,9 @@ $(function(){
       //a 태그 페이지 이동 막기
       $(".brideLink").on("click", function(event) {
       event.preventDefault();     
-        });
-        
-         // 내용 클릭 시 모달을 띄움
+   	  });
+   	  
+   	   // 내용 클릭 시 모달을 띄움
         $(".content-link").click(function() { // (2) .content-link 클릭 이벤트 함수 시작
             var mno = $(this).data("mno");
             var content = $(this).data("content");
@@ -253,10 +253,10 @@ $(function(){
             window.location.href = "/invitation/register"; // 작성 페이지로 이동
         }); // (17) 작성하기 버튼 클릭 이벤트 함수 끝
         
-        // "청처장화면 돌아가기" 버튼 클릭 시
+        // "청첩장화면 돌아가기" 버튼 클릭 시
         $("#mainbutton").click(function() { // (18) 작성하기 버튼 클릭 이벤트 함수 시작
             window.location.href = "/invitation/wedding"; // 작성 페이지로 이동
         }); // (18) 작성하기 버튼 클릭 이벤트 함수 끝
-        
+   	 
     
 });
