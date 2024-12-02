@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import project.invitation.domain.MessageVO;
+import project.invitation.domain.ViewList;
 import project.invitation.mapper.MessageMapper;
 
 @Log4j
@@ -59,11 +60,17 @@ public class MessageServiceImpl implements MessageService{
 		return mapper.delete(mno) == 1;
 	}
 
+	/*
+	 * @Override public List<MessageVO> getList() { log.info("get List...........");
+	 * return mapper.getList(); }
+	 */
+	
 	@Override
-	public List<MessageVO> getList() {
-		log.info("get List...........");
-		return mapper.getList();
+	public List<MessageVO> getList(ViewList viewlist) {
+		log.info("get List with viewlist: " + viewlist);
+		return mapper.getListWithPage(viewlist);
 	}
+	
 
 	@Override
 	public boolean checkpw(MessageVO messageVO) {
@@ -76,6 +83,13 @@ public class MessageServiceImpl implements MessageService{
     public String getGuestPwByMno(Long mno) {
         return mapper.getGuestPwByMno(mno);
     }
+
+	@Override
+	public int getTotal(ViewList viewlist) {
+		log.info("get total count");
+		return mapper.getTotalCount(viewlist);
+	}
+
 
     
 	
