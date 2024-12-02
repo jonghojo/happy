@@ -1,0 +1,242 @@
+* {margin: 0 auto; padding: 0; font-family: 'GowunDodum-Regular';}
+
+a {text-decoration: none; color: #333;}
+
+ul, ol, li {list-style: none;}
+
+/* 영어 글씨용 */
+@font-face {
+    font-family: 'InkLipquid';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 손글씨 느낌나는 */
+@font-face {
+    font-family: 'KyoboHandwriting2021sjy';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KyoboHandwriting2021sjy.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 깔끔한, 기본 글씨용 */
+@font-face {
+    font-family: 'GowunDodum-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#wrap {
+    width: 400px;
+    height: auto;
+}
+
+.bg_g {
+    height: 900px;
+    background-color: #e6ece2;
+}
+
+#slidewrap {width: 400px; height: 500px; position: relative;}
+
+.slide {width: 100%;}
+
+.slide > li {width: 100%; height: 500px; position: absolute; left: 0; top:0;}
+
+.slide > li > img {width: 100%; height: 100%;}
+
+.slide li:not(:first-child) {display: none;}
+
+#main {
+    width: 100%;
+    position: relative;
+}  
+
+#main img{
+    width: 100%;
+}
+
+#main .notice {
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+    color: white;
+    font-style: italic;
+    font-family: 'InkLipquid';
+    font-size: 20px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.title {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: 3%;
+    left: 10%;
+    font-style: italic;
+    font-size: 50px;
+    opacity: 0.8;
+    font-family: 'InkLipquid';
+    z-index: 1;
+}
+
+.ment {
+    width: 100%;
+    height: 350px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ment .date {
+    margin-bottom: 60px;
+    margin-left: 60px;
+}
+
+.ment .line {
+    width: 70%;
+    height: 50px;
+    border-bottom: 1px solid #666;
+}
+
+.ment p {
+    margin-top: 40px;
+}
+
+.calender {
+    width: 100%;
+    height: 450px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.calender img {
+    width: 400px;
+    margin-top: 25px;
+}
+
+.pictorial {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: stretch;
+}
+.pictorial img {
+    width: 180px;
+    height: 225px;
+}
+
+.maps {
+    width: 100%;
+    height: 680px;
+    margin-top: 50px;
+}
+
+.maps h3 {
+    font-size: 25px;
+    margin: 0 0 20px 10px; 
+}
+
+.maps p {
+    font-size: 12px;
+    margin: 0 0 10px 5px;
+    font-weight: bold;
+}
+
+.maps img {
+    width: 100%;
+    margin: 0 0 10px 0;
+}
+
+#account {
+    width: 100%;
+    height: 350px;
+    /* background-color: #effceb; */
+    text-align: center;
+}
+
+#account .line {
+    width: 75%;
+    height: 70px;
+    border-bottom: 1px solid #666; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+} 
+
+#account h3 {
+    font-size: 25px;
+}
+
+#account .count {
+    height: 80px;
+    font-size: 13px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu {width:300px; margin-top: 30px;}
+
+.menu>li {
+    line-height:40px; 
+    text-align:center; 
+    border: 1px solid #666; 
+    border-radius: 5px;
+    margin: 0 0 5px 0;
+}
+
+.menu>li>a {color:#333;}
+
+
+.sub {width:100%; background-color:#ddd; display:none;}
+
+#comments {
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    background-color: #edf3ea;
+    border-radius: 5px;
+}
+ 
+.btn_c {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.btn {
+    width: 150px;
+    height: 40px;
+    color: white;
+    border: 2px solid #7e9572;
+    border-radius: 10px;
+    background-color: rgb(125, 158, 125);
+    box-shadow: 2px 2px 3px 1px #888888;
+    cursor: pointer;
+}
+
+footer {
+    height: 100px;
+    color: white;
+    display: flex;
+    align-items: center;
+    background-color: #a0be90;
+    font-family: 'InkLipquid';
+}
+
+footer p {
+    font-family: 'InkLipquid';
+    font-size: 30px;
+}
