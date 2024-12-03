@@ -99,6 +99,7 @@ public class CommentsController {
         int result = service.remove(cno, vo.getCommenter());
         
         if (result == 1) {
+        	log.info("refdf****");
             return new ResponseEntity<>("success", HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -121,40 +122,3 @@ public class CommentsController {
                 : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
