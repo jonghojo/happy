@@ -56,7 +56,8 @@
 - 관리자 화면
 <br>![image](https://github.com/user-attachments/assets/7710fea9-6c3d-4c0d-a56f-3bb724a26ba7)
 ![image](https://github.com/user-attachments/assets/9266cc9d-01fd-4a42-bb26-805d98c221c0)
-![image](https://github.com/user-attachments/assets/6f15f910-8776-40f5-807e-cc3747b24781)
+![image](https://github.com/user-attachments/assets/c72013ac-7a44-4f76-88eb-1563925f3001)
+
 
 
 <br>   
