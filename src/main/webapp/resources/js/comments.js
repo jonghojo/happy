@@ -66,7 +66,11 @@ let commentsService = (function(){
             data: JSON.stringify({cno : cno, commenter: commenter}),
             contentType: "application/json; charset=utf-8",
             success: function(response){
-                if(callback) callback(response);
+                if(callback) {
+                console.log("********");
+                callback(response);
+                console.log(response);
+                }
             },
             error: function(xhr, status,er){
                if (error){
