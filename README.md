@@ -96,7 +96,8 @@ Mybatis 프레임워크 활용
 
    
 ### 클래스 다이어그램(Class Diagram)
-  
+<br>![image](https://github.com/user-attachments/assets/0abb95d7-2f6a-468f-b11a-608c668c9291)
+
    
 <br>   
    
