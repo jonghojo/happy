@@ -1,19 +1,29 @@
-* {margin: 0 auto; padding: 0; font-family: 'GmarketSansMedium';}
+* {margin: 0 auto; padding: 0; font-family: 'GowunDodum-Regular';}
 
 a {text-decoration: none; color: #333;}
 
 ul, ol, li {list-style: none;}
 
+/* 영어 글씨용 */
 @font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-family: 'InkLipquid';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
+/* 손글씨 느낌나는 */
 @font-face {
-    font-family: 'InkLipquid';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
+    font-family: 'KyoboHandwriting2021sjy';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KyoboHandwriting2021sjy.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 깔끔한, 기본 글씨용 */
+@font-face {
+    font-family: 'GowunDodum-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,7 +34,7 @@ ul, ol, li {list-style: none;}
 }
 
 .bg_g {
-    height: 950px;
+    height: 900px;
     background-color: #e6ece2;
 }
 
@@ -107,6 +117,7 @@ ul, ol, li {list-style: none;}
 
 .calender img {
     width: 400px;
+    margin-top: 25px;
 }
 
 .pictorial {
@@ -129,14 +140,14 @@ ul, ol, li {list-style: none;}
 }
 
 .maps h3 {
-    font-family: 'GmarketSansMedium';
     font-size: 25px;
     margin: 0 0 20px 10px; 
 }
 
 .maps p {
     font-size: 12px;
-    margin: 0 0 10px 0;
+    margin: 0 0 10px 5px;
+    font-weight: bold;
 }
 
 .maps img {
@@ -152,7 +163,7 @@ ul, ol, li {list-style: none;}
 }
 
 #account .line {
-    width: 70%;
+    width: 75%;
     height: 70px;
     border-bottom: 1px solid #666; 
     display: flex;
@@ -162,7 +173,6 @@ ul, ol, li {list-style: none;}
 } 
 
 #account h3 {
-    font-family: 'GmarketSansMedium';
     font-size: 25px;
 }
 
@@ -213,7 +223,7 @@ ul, ol, li {list-style: none;}
     border: 2px solid #7e9572;
     border-radius: 10px;
     background-color: rgb(125, 158, 125);
-    box-shadow: 3px 3px 5px 1px #555555;
+    box-shadow: 2px 2px 3px 1px #888888;
     cursor: pointer;
 }
 

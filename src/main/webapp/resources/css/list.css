@@ -23,7 +23,11 @@
 
 a {text-decoration: none; color: #333;}
 
-ul, ol, li {list-style: none;}
+ul, ol, li {list-style: none; margin: 0; padding: 0;}
+
+p {
+   margin-bottom: 0;
+}
 
 #wrap {
     width: 400px;
@@ -45,6 +49,8 @@ ul, ol, li {list-style: none;}
    width: 90%;
    margin-bottom: 10px;
 }
+
+
 
 .m_btn {
    text-align: center;
@@ -109,7 +115,8 @@ ul, ol, li {list-style: none;}
 }
 
 .comment {
-    width: 55px;
+    width: 75px;
+    height: 30px;
     border: 2px solid rgb(92, 129, 92);
     border-radius: 5px;
     background-color: rgb(254, 255, 252);
@@ -131,11 +138,23 @@ ul, ol, li {list-style: none;}
 }
 
 #regBtn:hover{
-	box-shadow: 2px 2px 2px #8f8f8f;
+   box-shadow: 2px 2px 2px #8f8f8f;
 }
 
+.Logout_B {
+   padding: 5px 10px;
+    cursor: pointer;
+    border: 1px solid rgb(165, 173, 165);
+    border-radius: 5px;
+    background-color: rgb(251, 255, 243);
+    box-shadow: 1px 1px 1px #8f8f8f;
+}
+
+.Logout_B:hover{
+	box-shadow: 2px 2px 2px #8f8f8f;
+}
 #mainbutton{
-	width: 195px;
+   width: 195px;
     height: 35px;
     cursor: pointer;
     border: 1px solid rgb(165, 173, 165);
@@ -145,7 +164,7 @@ ul, ol, li {list-style: none;}
 }
 
 #mainbutton:hover{
-	box-shadow: 2px 2px 2px #8f8f8f;
+   box-shadow: 2px 2px 2px #8f8f8f;
 }
 
 .modal-content.wit{
@@ -229,23 +248,23 @@ ul, ol, li {list-style: none;}
 }
 
 nav li{
-	margin: 10px 10px;
+   margin: 10px 10px;
 }
 
 .row{
-	width:100%;
-	align-items: center;	
+   width:100%;
+   align-items: center;   
 }
 
 #searchForm{
-	width:100%;
-	display:flex;
-	justify-content: center;
+   width:100%;
+   display:flex;
+   justify-content: center;
     align-items: center
 }
 
 .search-box{
-	margin:10px;
+   margin:10px;
 }
 .search-btn {
   color: #EDEDED;
@@ -259,7 +278,7 @@ nav li{
 
 
 footer {
-	width:400px;
+   width:400px;
     height: 100px;
     display: flex;
     align-items: center;
@@ -272,3 +291,49 @@ footer a {
     font-family: 'InkLipquid';
     font-size: 30px;
 }
+
+
+/* admin comment css */
+
+.comments-list {
+   width: 380px;
+   font-size: 14px;
+   display: flex;
+   justify-content: flex-end;
+}
+
+.comments-list>li:hover{
+   cursor:pointer;
+}
+
+.left {
+   text-align: center;
+}
+
+.header {
+   display: flex;
+   height: 35px;
+   border: 2px solid #546752;
+   border-bottom: none;
+   border-radius: 15px 15px 0 0;
+   justify-content: center;
+   padding: 0 20px 0 20px;
+}
+
+.left p {
+   display: flex;
+   height: 35px;
+   border: 2px solid #546752;
+   border-top: none;
+   border-radius: 0 0 15px 15px;
+   align-items: center;
+   justify-content: center;
+   padding: 0 20px 0 20px;
+}
+
+#messageContent{
+	margin-bottom: 10px;
+}
+
+
+
