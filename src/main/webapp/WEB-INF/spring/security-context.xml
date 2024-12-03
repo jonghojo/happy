@@ -23,16 +23,13 @@
         <security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/>
         
         <!-- 로그아웃 설정 -->
-        <security:logout logout-url="/customLogout" logout-success-url="/login?logout=true" invalidate-session="true"/>
+        <security:logout logout-url="/customLogout" logout-success-url="/invitation/wedding" invalidate-session="true" delete-cookies="JSESSIONID"/>
 
         <!-- CSRF 비활성화 (필요시 활성화) -->
         <security:csrf disabled="true" />
 
         <!-- 접근 거부 시 에러 페이지 설정 -->
         <security:access-denied-handler error-page="/accessError"/>
-
-        <!-- Remember-Me 설정 -->
-        <security:remember-me data-source-ref="dataSource" token-validity-seconds="604800"/>
     </security:http>
     
     <security:authentication-manager>
