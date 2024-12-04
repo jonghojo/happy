@@ -5,85 +5,86 @@
 <mapper namespace="project.invitation.mapper.MessageMapper">
   
   <sql id="viewlist">
-  	<trim prefix="(" suffix=") and">
-  		<foreach collection="typeArr" item="type" separator="or" >
-  		
-  			<if test="type=='C'.toString()">
-  				content like '%'|| #{keyword} ||'%'
-  			</if>  			
-  			<if test="type=='W'.toString()">
-  				writer like '%'|| #{keyword} ||'%'
-  			</if>  			
-  		</foreach>
-	</trim>  	
+     <trim prefix="(" suffix=") and">
+        <foreach collection="typeArr" item="type" separator="or" >
+        
+           <if test="type=='C'.toString()">
+              content like '%'|| #{keyword} ||'%'
+           </if>           
+           <if test="type=='W'.toString()">
+              writer like '%'|| #{keyword} ||'%'
+           </if>           
+        </foreach>
+   </trim>     
   </sql>
 
-	<select id="getList" resultType="project.invitation.domain.MessageVO">
-		<![CDATA[
-		select * from message where mno > 0 order by regdate desc
-		]]>
-	</select>
-	
-	
-	<select id="getListWithPage" resultType="project.invitation.domain.MessageVO">
-  	<![CDATA[
-	  	select mno, content, writer, guestpw,regdate
-	  	from (
-	  		select 
-	  		/*+INDEX_DESC(message pk_message)*/
-	  		rownum rn, mno, content, writer,guestpw ,regdate
-	  		from message 
-	  		where 
-	 ]]>	
-		<include refid="viewlist"></include>
-		
-	  <![CDATA[	 	
-	  			
-	  		rownum <= #{pageNum} * #{amount}
-	  	)
-	  	where 
-	
-	  	rn > (#{pageNum} - 1) * #{amount}
-	  	order by regdate desc
-  	  ]]>
+   <select id="getList" resultType="project.invitation.domain.MessageVO">
+      <![CDATA[
+      select * from message where mno > 0 
+      order by regdate desc
+      ]]>
+   </select>
+   
+   
+ <select id="getListWithPage" resultType="project.invitation.domain.MessageVO">
+     <![CDATA[
+        select mno, content, writer, guestpw, regdate
+        from (
+           select 
+           /*+INDEX_DESC(message idx_regdate)*/
+           rownum rn, mno, content, writer, guestpw, regdate
+           from message
+           where regdate > '2024/11/30' and
+    ]]>   
+      <include refid="viewlist"></include>
+      
+     <![CDATA[          
+           rownum <= #{pageNum} * #{amount}
+        )
+        where 
+   
+        rn > (#{pageNum} - 1) * #{amount}
+        
+       ]]>
   </select>
-	
-	
-	<select id="getTotalCount" resultType="int">
-		select count(*) from message
-		where
-			<include refid="viewlist"></include>
-		mno > 0
-	</select>
-	
-	
-	<insert id="insert">
-		insert into message (mno,content,writer,guestpw)
-		values(mno_seq.nextval,#{content},#{writer},#{guestpw})
-	</insert>
-	
-	<select id="read" resultType="project.invitation.domain.MessageVO">
-		select * from message where mno = #{mno}
-	</select>
-	
-	<delete id="delete">
-		delete from message where mno= #{mno}
-	</delete>
-	
-	<update id="update">
-		update message
-		set content =#{content}
-		where mno = #{mno}
-	</update>
-	
-	<select id="checkguestpw" resultType="boolean">
-		select count(*) from message where mno= #{mno} and guestpw = #{guestpw}
-	</select>
-	
-	<select id="getGuestPwByMno" resultType="string">
+
+   
+   
+   <select id="getTotalCount" resultType="int">
+      select count(*) from message
+      where
+         <include refid="viewlist"></include>
+      mno > 0
+   </select>
+   
+   
+   <insert id="insert">
+      insert into message (mno,content,writer,guestpw)
+      values(mno_seq.nextval,#{content},#{writer},#{guestpw})
+   </insert>
+   
+   <select id="read" resultType="project.invitation.domain.MessageVO">
+      select * from message where mno = #{mno}
+   </select>
+   
+   <delete id="delete">
+      delete from message where mno= #{mno}
+   </delete>
+   
+   <update id="update">
+      update message
+      set content =#{content}
+      where mno = #{mno}
+   </update>
+   
+   <select id="checkguestpw" resultType="boolean">
+      select count(*) from message where mno= #{mno} and guestpw = #{guestpw}
+   </select>
+   
+   <select id="getGuestPwByMno" resultType="string">
         SELECT guestpw
         FROM message
         WHERE mno = #{mno}
     </select>
     
-</mapper>	
+</mapper>   
