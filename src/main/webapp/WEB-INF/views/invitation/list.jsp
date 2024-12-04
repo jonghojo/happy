@@ -38,13 +38,13 @@
    
    
       <div class="r_btn">
-		    <sec:authorize access="isAuthenticated()">
-		        <a href="/customLogout" class="Logout_B">로그아웃</a>
-		    </sec:authorize>
-		    <sec:authorize access="!isAuthenticated()">
-		        <button id="regBtn" type="button" >작성하기</button>
-		    </sec:authorize>
-		</div>
+          <sec:authorize access="isAuthenticated()">
+              <a href="/customLogout" class="Logout_B">로그아웃</a>
+          </sec:authorize>
+          <sec:authorize access="!isAuthenticated()">
+              <button id="regBtn" type="button" >작성하기</button>
+          </sec:authorize>
+      </div>
 
       <c:forEach items="${list}" var="message">
          <div class="card_m">
@@ -66,7 +66,7 @@
                            value="${message.content}" /></a>
                   </p>
                </div>
-         	<div class="card_footer">
+            <div class="card_footer">
                   <sec:authorize access="isAuthenticated()">
                    <div style="text-align: right;">
                        <button type="button" class="comment" id="addcommentsBtn">답글 작성</button>
@@ -77,7 +77,7 @@
          </div>
          <ul id="comments-${message.mno}" class="comments-list"></ul>
       </c:forEach>
-	
+   
 
          <!-- 페이지 버튼 클릭시 동작 -->
          <form id="actionForm" action="/invitation/list" method="get">
@@ -158,7 +158,7 @@
                      <input type="hidden" name="pageNum" value="${pageMaker.viewlist.pageNum}"> 
                      <input type="hidden" name="amount" value="${pageMaker.viewlist.amount}">
                      <button class="search-btn" type="submit">
-						<i class="fas fa-search"></i>                  
+                  <i class="fas fa-search"></i>                  
                      </button>
                   </div>               
                </form>
@@ -247,7 +247,7 @@
                   </div>
                   <div class="modal-body">
                      <p id="messageContent"></p>
-                     <div>
+                     <div style="text-align: center;">
                         <button class="btn btn-primary" id="editBtn" data-mno="${message.mno}" data-guestpw="${message.guestpw}">수정</button>
                         <button id="deleteBtn" class="btn btn-danger">삭제</button>
                         <button id="listBtn" class="btn btn-secondary">목록으로</button>
@@ -259,38 +259,38 @@
          <!-- 모달창 끝 -->
          
          <!-- 답글 관련 모달창 -->
-	<!-- 답글 작성 모달 -->
-	<div id="mymodal" class="modal" tabindex="-1">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title">답글 남기기</h5>
-	      </div>
-	      <div class="modal-body">
-			<div class="form-group">
-				<label>답글내용</label>
-				<input class="form-control" name="Comments" value="New Comments!!">
-			</div>
-			<div class="form-group">
-				<label>신랑*신부이름</label>
-				<input class="form-control" name="Writer" value="New Writer!!" >
-			</div>
-			<div class="form-group">
-				<label>답글 날짜</label>
-				<input class="form-control" name="Comments Date" id="commentDate" value="" readonly>
-			</div>
-	      </div>
-	      <div class="modal-footer">
-	      	<sec:authorize access="isAuthenticated()">
-	        	<button type="button" class="btn btn-primary" id="modalModBtn">수정하기</button>
-	        	<button type="button" class="btn btn-danger" id="modalRemoveBtn">삭제하기</button>
-	        </sec:authorize>
-	        	<button type="button" class="btn btn-info" id="modalRegisterBtn">등록하기</button>
-	        	<button type="button" class="btn btn-default" id="modalCloseBtn" data-bs-dismiss="modal">닫기</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+   <!-- 답글 작성 모달 -->
+   <div id="mymodal" class="modal" tabindex="-1">
+     <div class="modal-dialog">
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title">답글 남기기</h5>
+         </div>
+         <div class="modal-body">
+         <div class="form-group">
+            <label>답글내용</label>
+            <input class="form-control" name="Comments" value="New Comments!!">
+         </div>
+         <div class="form-group">
+            <label>신랑*신부이름</label>
+            <input class="form-control" name="Writer" value="New Writer!!" >
+         </div>
+         <div class="form-group">
+            <label>답글 날짜</label>
+            <input class="form-control" name="Comments Date" id="commentDate" value="" readonly>
+         </div>
+         </div>
+         <div class="modal-footer">
+            <sec:authorize access="isAuthenticated()">
+              <button type="button" class="btn btn-primary" id="modalModBtn">수정하기</button>
+              <button type="button" class="btn btn-danger" id="modalRemoveBtn">삭제하기</button>
+           </sec:authorize>
+              <button type="button" class="btn btn-info" id="modalRegisterBtn">등록하기</button>
+              <button type="button" class="btn btn-default" id="modalCloseBtn" data-bs-dismiss="modal">닫기</button>
+         </div>
+       </div>
+     </div>
+   </div>
             
 </div>
 
@@ -302,24 +302,24 @@
 
 /* comments */
 $(document).ready(function(){
-	
-	// 페이지 로드 시 각 게시물에 대해 댓글을 자동으로 로드
-	$(".card_m").each(function() {
+   
+   // 페이지 로드 시 각 게시물에 대해 댓글을 자동으로 로드
+   $(".card_m").each(function() {
         let mnoValue = $(this).find(".content-link").data("mno");  // 게시물의 mno 값 가져오기
         console.log("mnoValue:", mnoValue);  // 확인
         showList(mnoValue);  // 해당 mno에 맞는 댓글 로드 함수 호출
     });
-	
-	// 댓글 로드 함수
-	function showList(mnoValue) {
-		let commentsUL = $("#comments-" + mnoValue); // 특정 mno에 해당하는 UL 선택
-		console.log("commentsUL: ", commentsUL);
-		commentsUL.empty();
-		
-	 	// 댓글 데이터를 서버에서 가져오는 부분 (예시)
+   
+   // 댓글 로드 함수
+   function showList(mnoValue) {
+      let commentsUL = $("#comments-" + mnoValue); // 특정 mno에 해당하는 UL 선택
+      console.log("commentsUL: ", commentsUL);
+      commentsUL.empty();
+      
+       // 댓글 데이터를 서버에서 가져오는 부분 (예시)
         commentsService.getList({ mno: mnoValue }, function(data) {
-        	console.log("댓글 데이터: ", data);
-        	if (data && data.length > 0) {
+           console.log("댓글 데이터: ", data);
+           if (data && data.length > 0) {
                 // 댓글 데이터가 성공적으로 로드되면, 댓글을 표시
                 data.forEach(function(comment) {
                     let str = "<li class='left clearfix' data-cno='" + comment.cno + "'>";
@@ -335,7 +335,7 @@ $(document).ready(function(){
             console.error("댓글 가져오기 실패:", error);
         });
     }
-	
+   
     let modal = $("#mymodal");
     let modalInputComment = modal.find("input[name='Comments']");
     let modalInputCommenter = modal.find("input[name='Writer']");
@@ -346,15 +346,15 @@ $(document).ready(function(){
 
     var commenter = $("#commenter").val();  // 서버에서 넘겨받은 commenter 값
 
-	<sec:authorize access="isAuthenticated()">
-		commenter = '<sec:authentication property="principal.username"/>';
-	</sec:authorize>
-	
-	
-	
+   <sec:authorize access="isAuthenticated()">
+      commenter = '<sec:authentication property="principal.username"/>';
+   </sec:authorize>
+   
+   
+   
     // new comment 팝업창
     $("body").on("click", "#addcommentsBtn", function () {
-    	var mno = $(this).closest('.card_m').find('.content-link').data("mno");
+       var mno = $(this).closest('.card_m').find('.content-link').data("mno");
         console.log("게시글 번호(mno):", mno);// 게시글 번호 가져오기
         
         $("#mymodal").data("mno", mno);
@@ -362,32 +362,32 @@ $(document).ready(function(){
         
         $("#mymodal").modal("show"); // 모달 열기
         function decodeHtmlEntity(str) {
-    	    var doc = new DOMParser().parseFromString(str, 'text/html');
-    	    return doc.documentElement.textContent || doc.body.textContent;
-    	}
-    	 
-    	// commenter 값을 디코딩해서 설정
-    	 let decodedCommenter = decodeHtmlEntity(commenter);
+           var doc = new DOMParser().parseFromString(str, 'text/html');
+           return doc.documentElement.textContent || doc.body.textContent;
+       }
+        
+       // commenter 값을 디코딩해서 설정
+        let decodedCommenter = decodeHtmlEntity(commenter);
 
         modal.find("input").val(""); // 입력 필드 초기화
-	    // 작성자 설정
-	   	modal.find("input[name='Writer']").val(decodedCommenter);
+       // 작성자 설정
+         modal.find("input[name='Writer']").val(decodedCommenter);
         modal.find("button[id!='modalCloseBtn']").hide();  // 수정, 삭제 버튼 숨기기
         modalRegisterBtn.show();  // 등록 버튼 표시
 
-    	
-	});
+       
+   });
     
 
     // 댓글 등록
     modalRegisterBtn.on("click", function () {
-    	
-    	var mnoValue = $('#mymodal').data('mno');
+       
+       var mnoValue = $('#mymodal').data('mno');
         console.log("MNO:", mnoValue);
-    	
+       
         let comments = {
-        	c_content: modalInputComment.val(),
-        	commenter: modalInputCommenter.val(),
+           c_content: modalInputComment.val(),
+           commenter: modalInputCommenter.val(),
             mno: mnoValue,
             c_date: new Date() // 현재 날짜와 시간을 댓글 작성 날짜로 설정
         };
@@ -395,7 +395,7 @@ $(document).ready(function(){
         console.log("댓글 내용:", comments);
 
         commentsService.add(comments, function (result) {
-            alert(result);
+            alert("답글이 등록되었습니다.");
 
             modal.find("input").val("");
             modal.modal("hide");
@@ -407,9 +407,9 @@ $(document).ready(function(){
         });
     });
     
- 	// 수정 및 삭제 시작
-	// 답글 클릭 시 모달 창 표시
-	$(".comments-list").on("click", "li", function() {
+    // 수정 및 삭제 시작
+   // 답글 클릭 시 모달 창 표시
+   $(".comments-list").on("click", "li", function() {
     let cno = $(this).data("cno");  // 클릭된 댓글의 cno
     var mno = $(this).closest('.card').find('.content-link').data("mno");
     let c_date = $(this).data("c_date");
@@ -456,7 +456,7 @@ $(document).ready(function(){
         console.error("댓글 데이터 가져오기 실패:", error);
     });
 });
-	// 댓글 수정 처리
+   // 댓글 수정 처리
     modalModBtn.on("click", function() {
         let comments = {
             cno: modal.data("cno"),
@@ -464,11 +464,11 @@ $(document).ready(function(){
             commenter: modalInputCommenter.val(),
             c_date:new Date()
         };
-		
+      
         if(!commenter){
-    		alert("로그인후 수정이 가능합니다.");
-    		return;
-    	}
+          alert("로그인후 수정이 가능합니다.");
+          return;
+       }
         
         commentsService.update(comments, function(result) {
             alert("댓글이 수정되었습니다.");
@@ -479,11 +479,11 @@ $(document).ready(function(){
             showList(mnoValue);  // 댓글 목록 갱신
         });
     });
-	
- 	// 댓글 삭제 처리
+   
+    // 댓글 삭제 처리
     modalRemoveBtn.on("click", function(response) {
-    	let cno = modal.data("cno");  // 삭제할 댓글의 cno
-    	let commenter = modal.data("commenter");
+       let cno = modal.data("cno");  // 삭제할 댓글의 cno
+       let commenter = modal.data("commenter");
 
         if (!cno) {
             alert("삭제할 댓글이 없습니다.");
@@ -491,23 +491,23 @@ $(document).ready(function(){
         }
   /*       
         if(!admin_id){
-    		alert("로그인후 삭제가 가능합니다.");
-    		return;
-    	} */
+          alert("로그인후 삭제가 가능합니다.");
+          return;
+       } */
         
         console.log("cno : "+cno);
         if (confirm("정말 삭제하시겠습니까?")) {
             commentsService.remove(cno, commenter,function(success) {
-            	console.log("----------");
+               console.log("----------");
                 alert("댓글이 삭제되었습니다.");
                 modal.modal("hide");
                 
                 var mnoValue = modal.data('mno');
                 showList(mnoValue);  // 댓글 목록 갱신
             }, function(error) {
-            	console.log("-----"+cno)
-            	alert("댓글 삭제 실패")
-            	modal.modal("hide");
+               console.log("-----"+cno)
+               alert("댓글 삭제 실패")
+               modal.modal("hide");
             });
         }
     });
