@@ -46,7 +46,7 @@
 - 메인 청첩장 화면
 <br>![image](https://github.com/user-attachments/assets/aca08f5c-2d9c-4a69-b850-1f8b05a54864)
 - 방명록 조회 화면
-<br>![image](https://github.com/user-attachments/assets/c682b364-bf5b-4941-a0d6-50b889133335)
+<br>![image](https://github.com/user-attachments/assets/cc0abaeb-fa13-401a-b14d-b481e0d0a66d)
 ![image](https://github.com/user-attachments/assets/9aebc122-de96-4b59-b8fe-1341ead2a7d5)
 ![image](https://github.com/user-attachments/assets/b72425a2-fffa-4ebb-b0d2-f0e6947ef76b)
 
